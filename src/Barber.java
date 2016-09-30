@@ -15,7 +15,6 @@ public class Barber {
 	public boolean cutHair(Object customer){
 		if(isbarbersleeping){
 			wakeupBarber();
-			System.out.println("Waking up Barber..");
 		}
 		System.out.println("Barber Cutting the Hair..");
 		try {
@@ -27,7 +26,7 @@ public class Barber {
 		}
 		if(shop.isEmpty()){
 			isbarbersleeping = true;
-			System.out.println("No Customers in waiting Room.. Barber going to Sleep..");
+			System.out.println("No Customers in waiting Room.. Barber going to Sleep..\n");
 		}
 		return true;
 	}

@@ -34,8 +34,9 @@ public class BarberShop {
 				while(shop.isOpen()) {
 					//Run indefinitely till the shop is closed..
 					if(!shop.waitingRoom.isEmpty()){
-						System.out.println("DEBUG -01");
-						barber.cutHair(shop.waitingRoom.poll());
+						if(barber.cutHair(shop.waitingRoom.poll())){
+							shop.recordHaircut();
+						}
 					}
 				}
 			}
@@ -49,12 +50,17 @@ public class BarberShop {
 		Thread.sleep(SHOP_RUNTIME_MILLIS);
 
 		shop.close();
+		System.out.println("--------------------Todays analysis---------------");
+		System.out.println("Total openening time (milliseconds) of shop:" + SHOP_RUNTIME_MILLIS);
+		System.out.println("Total no.of customers served:" + shop.haircuts());
+		System.out.println("Total no.of customers declined:" + shop.lostCustomers());
+		System.out.println("Total sleeping time of barber:");
 	}
 	
 	
 	private void close() {
-		System.out.println("Closing the Shop..");
 		shopOpen.set(false);
+		System.out.println("Closing the Shop..");
 	}
 
 	private void open() {
