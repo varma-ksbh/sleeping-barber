@@ -15,8 +15,6 @@ public class BarberShop {
 	private final BlockingQueue<Object> waitingRoom = new ArrayBlockingQueue<Object>(
 			NUM_WAITING_ROOM_CHAIRS);
 	private static Barber barber = null; 
-	// private final BlockingQueue<Object> waitingRoom = new
-	// LinkedBlockingQueue<Object>(NUM_WAITING_ROOM_CHAIRS);
 	
 	public static void main(String[] args) throws InterruptedException {
 		final BarberShop shop = new BarberShop();
@@ -50,11 +48,6 @@ public class BarberShop {
 		Thread.sleep(SHOP_RUNTIME_MILLIS);
 
 		shop.close();
-		System.out.println("--------------------Todays analysis---------------");
-		System.out.println("Total openening time (milliseconds) of shop:" + SHOP_RUNTIME_MILLIS);
-		System.out.println("Total no.of customers served:" + shop.haircuts());
-		System.out.println("Total no.of customers declined:" + shop.lostCustomers());
-		System.out.println("Total sleeping time of barber:");
 	}
 	
 	
